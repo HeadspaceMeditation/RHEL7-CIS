@@ -21,13 +21,13 @@ python2_bin: /bin/python2.7
 benchmark: RHEL7-CIS
 
 # Enable goss binary download
-rhel7cis_setup_audit: true
+rhel7cis_setup_audit: false
 # Options are downoad from github or copy from pre downloaded location
 # copy or download
 get_goss_file: download
 
 # Enable audits to run
-rhel7cis_run_audit: true
+rhel7cis_run_audit: false
 
 # Enable/Disable SELinux
 rhel7cis_selinux_disable: true
