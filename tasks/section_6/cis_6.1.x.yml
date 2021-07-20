@@ -263,6 +263,7 @@
     failed_when: false
     changed_when: false
     register: rhel_07_6_1_14_perms_results
+    when: item.mount is not match("/var/lib/docker/.*")
     with_items: "{{ ansible_mounts }}"
 
   - name: "NOTSCORED | 6.1.14 | AUDIT | Audit SGID executables |  Alert no SGID executables exist"
