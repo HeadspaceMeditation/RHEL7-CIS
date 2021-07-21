@@ -231,7 +231,7 @@
 - name: "AUTOMATED | 4.1.11 | PATCH | Ensure use of privileged commands is collected"
   block:
       - name: "AUTOMATED | 4.1.11 | AUDIT | Ensure use of privileged commands is collected"
-        shell: for i in  $(df | grep '^/dev' | awk '{ print $NF }'); do find $i -xdev -type f -perm -4000 -o -type f -perm -2000; done
+        shell: for i in  $(df | grep '^/dev' | awk '{ print $NF }'); do find $i -ignore_readdir_race -xdev -type f -perm -4000 -o -type f -perm -2000; done
         register: priv_procs
         changed_when: no
         check_mode: no
