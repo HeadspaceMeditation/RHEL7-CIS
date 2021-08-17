@@ -1,0 +1,21 @@
+- name: "SCORED | 5.4.4 | PATCH | HS - Ensure default user shell timeout is configured"
+  blockinfile:
+    create: yes
+    mode: 0644
+    dest: "{{ item.dest }}"
+    state: "{{ item.state }}"
+    marker: "# {mark} ANSIBLE MANAGED"
+    block: |
+      # Set session timeout - CIS ID RHEL-07-5.4.4
+      TMOUT={{ rhel7cis_shell_session_timeout.timeout }}
+      readonly TMOUT
+      export TMOUT
+  loop:
+  - dest: "{{ rhel7cis_hs_shell_session_timeout.file }}"
+    state: present
+  when:
+  - hs_rhel7cis_rule_5_4_4
+  tags:
+  - level2
+  - patch
+  - rule_5.4.4

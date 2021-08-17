@@ -108,6 +108,11 @@
   tags:
   - rhel7cis_section6
 
+- include: hs_customizations/main.yml
+  when: rhel7cis_hscustom
+  tags:
+  - rhel7cis_hscustom
+
 - include: post.yml
   tags:
   - post_tasks
